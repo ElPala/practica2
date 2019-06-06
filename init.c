@@ -9,8 +9,9 @@
 int main(int argc, char const *argv[]) {
   int i;
   pid_t p;
-	int status;
+	//int status;
   char cmd[80];
+
   for ( i = 0; i < NPROCS; i++) {
     p=fork();
   	if(p==0){
@@ -20,7 +21,7 @@ int main(int argc, char const *argv[]) {
   /*
   for ( i = 0; i < NPROCS; i++) {
     	wait(&status);
-  } 
+  }
   */
 
 	do {
