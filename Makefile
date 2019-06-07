@@ -1,13 +1,14 @@
-all: init getty sh
+.PHONY: all initx gettyx shx clean
+all: initx gettyx shx
 
-	init:
+initx: init.c
 		gcc -o init init.c
 
-	getty:
+gettyx: getty.c
 		gcc -o getty getty.c
 
-	sh: 
+shx: sh.c
 		gcc -o sh sh.c
 
-	clean:
-		rm init getty shell
+clean:
+		rm init getty sh
