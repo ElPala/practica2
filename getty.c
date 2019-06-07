@@ -19,7 +19,11 @@ int main(int argc, char const *argv[]) {
       		printf("User:");
           fflush(stdin);
 
-      		scanf("%[^\n]%*c",user);
+      		//scanf("%[^\n]%*c",user);
+          //gets(user);
+          fgets(user, 100, stdin);
+          user[strlen(user)-1]='\0';
+
           passwd = fopen("passwd.txt", "r");
           if(passwd==NULL){
             return 0;
@@ -51,7 +55,9 @@ int main(int argc, char const *argv[]) {
       bool=1;
   		printf("psw:");
       fflush(stdin);
-      scanf("%[^\n]%*c",psw);
+      //scanf("%[^\n]%*c",psw);
+      fgets(psw, 100, stdin);
+      psw[strlen(psw)-1]='\0';
     	if(strcmp(psw,aux2)==0){
         printf("password correcta\n");
         execlp("./sh", "sh", NULL);
