@@ -28,22 +28,32 @@ int main()
 
     while(1){
       printf("Shell >");
+      fflush(stdin);
       scanf("%[^\n]%*c",entrada);
 
 
-      if (strcmp(entrada,"exit")){
-        printf("ola" );
-        //break;
+      if (strcmp(entrada,"exit")==0){
+        printf("ola\n" );
+        break;
       }
+
+    //  else   if (strcmp(entrada,"./exec.c")==0){
+      //    execlp("EXEC.c",NULL);
+        //}
+
 
       else if (entrada == "shutdown"){
         //kill
       }
 
-      else if (entrada == "./EXEC"){
-      char *args[]={"./EXEC",NULL};
-      execv(args[0],args);
-      }
+      pid_t p;
+      p = fork();
+      if(p==0)
+          execlp(entrada, entrada, NULL);
+
+
+
+
     }//end while
 
       printf("Ending-----");
