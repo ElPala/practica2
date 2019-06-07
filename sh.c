@@ -25,6 +25,7 @@ int main()
 {
     char cmd[80];
     char entrada[100];
+    int bandera1 = 0;
 
     while(1){
       printf("Shell >");
@@ -34,6 +35,7 @@ int main()
 
       if (strcmp(entrada,"exit")==0){
         printf("ola\n" );
+        bandera1 = 1;
         break;
       }
 
@@ -50,12 +52,13 @@ int main()
       p = fork();
       if(p==0)
           execlp(entrada, entrada, NULL);
-
-
-
-
     }//end while
 
+
+      if (bandera1 = 1) {
+        execlp("./getty","getty",NULL );
+
+      }
       printf("Ending-----");
 
     return 0;
