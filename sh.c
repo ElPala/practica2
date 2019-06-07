@@ -22,7 +22,6 @@ int main()
 
       if (strcmp(entrada,"shutdown")==0){
         //kill all
-        sleep(5);
         printf("pala es gei");
         execlp ("killall", "killall", "-9", "xterm","init", NULL);
       }

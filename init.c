@@ -9,8 +9,7 @@
 int main(int argc, char const *argv[]) {
   int i;
   pid_t p;
-	//int status;
-  char cmd[80];
+	int status;
 
   for ( i = 0; i < NPROCS; i++) {
     p=fork();

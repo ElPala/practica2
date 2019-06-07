@@ -1,13 +1,13 @@
-all: init getty Shell
+all: init getty sh
 
-	init: init.c
+	init:
 		gcc -o init init.c
 
-	getty: getty.c
+	getty:
 		gcc -o getty getty.c
 
-	shell: shell.c
-		gcc -o shell shell.c
+	sh: 
+		gcc -o sh sh.c
 
 	clean:
 		rm init getty shell
