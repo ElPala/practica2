@@ -18,16 +18,12 @@ int main(int argc, char const *argv[]) {
       execlp("/usr/bin/xterm", "xterm", "-e", "./getty", NULL);
     }
   }
-  /*
-  for ( i = 0; i < NPROCS; i++) {
-    	wait(&status);
+  while (1) {
+    wait(&status);
+    p=fork();
+  	if(p==0){
+      execlp("/usr/bin/xterm", "xterm", "-e", "./getty", NULL);
+    }
   }
-  */
-
-	do {
-		printf("Shell >");
-		scanf("%[^\n]%*c",cmd);
-	} while(strcmp(cmd,"shutdown")!=0);
-
   return 0;
 }
