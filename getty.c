@@ -35,7 +35,6 @@ int main(int argc, char const *argv[]) {
             len = strcspn(aux, str);
             aux2=memchr(aux,':',len+1);
             *(aux2++);
-            printf("%d\n", strlen(aux));
             aux[strlen(aux)-1]='\0';
             //strcpy(aux2,"");
             //strncpy ( aux, aux, len);
@@ -53,10 +52,9 @@ int main(int argc, char const *argv[]) {
   		printf("psw:");
       fflush(stdin);
       scanf("%[^\n]%*c",psw);
-      printf("%s\n", aux2);
-      printf("%s\n", psw);
     	if(strcmp(psw,aux2)==0){
         printf("password correcta\n");
+        execlp("./sh", "sh", NULL);
       }else
         printf("password incorrecta\n");
 
