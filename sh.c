@@ -2,18 +2,22 @@
 #include<stdlib.h>
 #include<unistd.h>
 #include <string.h>
+#include <sys/wait.h>
 
 
 int main()
 {
     char cmd[80];
     char entrada[100];
+    int status;
+    pid_t p;
 
     while(1){
       printf("Shell >");
       fflush(stdin);
-      scanf("%[^\n]%*c",entrada);
-
+      //scanf("%[^\n]%*c",entrada);
+      fgets(entrada, 100, stdin);
+      entrada[strlen(entrada)-1 ]='\0';
 
       if (strcmp(entrada,"exit")==0){
         execlp("./getty","getty",NULL );
@@ -22,16 +26,20 @@ int main()
 
       if (strcmp(entrada,"shutdown")==0){
         //kill all
-        printf("pala es gei");
         execlp ("killall", "killall", "-9", "xterm","init", NULL);
       }
 
-      pid_t p;
+      if (strcmp(entrada,"\n")==0){
+        continue;
+      }
+
+
       p = fork();
       if(p==0){
-          printf("pala es gei");
-                  execlp(entrada, entrada, NULL);
+          execlp(entrada, entrada, NULL);
 
+      }else {
+        wait(&status);
       }
     }//end while
 
